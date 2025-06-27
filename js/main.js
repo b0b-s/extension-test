@@ -2,7 +2,7 @@
 function start_up() {
   return new Promise((resolve, reject) => {
     const util_script = document.createElement("script");
-    util_script.src = "./utils.js";
+    util_script.src = "./js/utils.js";
     util_script.onload = () => {
       try {
         const container = utils.elem_id("onload-data-container");
@@ -29,6 +29,14 @@ function start_up() {
             case "linkcsstag": {
               const link = utils.elem_create("link");
               link.rel  = "stylesheet";
+              link.href = payload;
+              utils.elem_append(document.head, link);
+              break;
+            }
+            case "linkfavicontag": {
+              const link = utils.elem_create("link");
+              link.rel = "icon";
+              link.type = "image/x-icon";
               link.href = payload;
               utils.elem_append(document.head, link);
               break;
