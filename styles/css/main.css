@@ -1,5 +1,19 @@
-button {
-  color: blue;
+html, body {
+  width: 500px;
+  height: 300px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  font-family: "roboto";
+  user-select: none;
+}
+
+hr {
+  width: 470px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

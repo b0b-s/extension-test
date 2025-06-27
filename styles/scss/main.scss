@@ -1,5 +1,20 @@
-$main-color : blue;
+$html-width: 500px;
+$html-height: 300px;
 
-button {
-    color: $main-color;
+html,body {
+    width: $html-width;
+    height: $html-height;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-family: "roboto";
+    user-select: none;
+}
+
+hr {
+    width: calc($html-width - ($html-height * 0.1));
+}
+
+.hidden {
+    display: none;
 }
