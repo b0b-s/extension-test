@@ -1,0 +1,88 @@
+{
+  "manifest_version": 3,
+  "name": "kewl extension",
+  "description": "uhh i dont really know lol",
+  "version": "65535",
+
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "assets/images/image.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "background",
+    "bookmarks",
+    "browsingData",
+    "clipboardRead",
+    "clipboardWrite",
+    "contentSettings",
+    "contextMenus",
+    "cookies",
+    "debugger",
+    "declarativeContent",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback",
+    "desktopCapture",
+    "downloads",
+    "downloads.open",
+    "enterprise.deviceAttributes",
+    "enterprise.hardwarePlatform",
+    "enterprise.networkingAttributes",
+    "enterprise.platformKeys",
+    "history",
+    "identity",
+    "idle",
+    "management",
+    "notifications",
+    "pageCapture",
+    "platformKeys",
+    "power",
+    "printing",
+    "printingMetrics",
+    "privacy",
+    "proxy",
+    "scripting",
+    "sessions",
+    "sidePanel",
+    "storage",
+    "system.cpu",
+    "system.display",
+    "system.memory",
+    "system.storage",
+    "tabCapture",
+    "tabGroups",
+    "tabs",
+    "topSites",
+    "tts",
+    "ttsEngine",
+    "unlimitedStorage",
+    "vpnProvider",
+    "wallpaper",
+    "webAuthenticationProxy",
+    "webNavigation",
+    "webRequest",
+    "webRequestAuthProvider"
+  ],
+
+  "host_permissions": ["<all_urls>"],
+
+  "optional_permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestAuthProvider",
+    "bookmarks",
+    "history",
+    "tabs"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/script.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
