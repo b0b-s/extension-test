@@ -1,60 +1,51 @@
 const utils = {
-    elem_create: (elem_name) => {
-        try {
-            return document.createElement(elem_name.toString());
-        } catch(err) {
-            console.error("encountered an error creating an element at utils.elem_create: ", err);
-            return false;
-        }
-    },
-    elem_id: (elem) => {
-        try {
-            if (typeof elem === "string") {
-                return document.getElementById(elem.toString());
-            }
-            else {
-                return elem;
-            }
-        } catch(err) {
-            console.error("encountered an error identifying an element at utils.elem_id: ", err);
-            return false;
-        }
-    },
-    elem_append: (parent, children) => {
-        try {
-            parent === "body" ? parent = document.body : parent = utils.elem_id(parent);
-            if (Array.isArray(children)) {
-                children.forEach(child => {
-                    parent.appendChild(child);
-                });
-            }
-            else {
-                parent.appendChild(children);
-            }
-            return true;
-        } catch(err) {
-            console.error("encountered an error appending element(s) at utils.elem_append: ", err);
-            return false;
-        }
-    },
-    elem_remove: (elements) => {
-        try {
-            if (Array.isArray(elements)) {
-                elements.forEach(element => {
-                    element.remove();
-                });
-                return true;
-            }
-            else {
-                elements.remove();
-            }
-        } catch(err) {
-            console.error("encountered an error creating element(s) at utils.elem_remove: ", err);
-            return false;
-        }
-    },
-    elem_descendants: (root) => {
-        const elements = this.elem_id(root);
-        return elements ? Array.from(elements.querySelectorAll('*')) : [];
+  elem_create(elem_name) {
+    try {
+      return document.createElement(String(elem_name));
+    } catch (err) {
+      console.error("utils.elem_create error:", err);
+      return null;
     }
+  },
+
+  elem_id(elem) {
+    try {
+      return typeof elem === "string" ? document.getElementById(elem) : elem;
+    } catch (err) {
+      console.error("utils.elem_id error:", err);
+      return null;
+    }
+  },
+
+  elem_append(parent, children) {
+    try {
+      parent = parent === "body" ? document.body : utils.elem_id(parent);
+      if (!parent) throw new Error("parent not found");
+
+      (Array.isArray(children) ? children : [children])
+        .forEach(child => parent.appendChild(child));
+
+      return true;
+    } catch (err) {
+      console.error("utils.elem_append error:", err);
+      return false;
+    }
+  },
+
+  elem_remove(elements) {
+    try {
+      (Array.isArray(elements) ? elements : [elements])
+        .forEach(el => el?.remove?.());
+      return true;
+    } catch (err) {
+      console.error("utils.elem_remove error:", err);
+      return false;
+    }
+  },
+
+  /** Return **all descendant Element nodes** of root (empty array if none). */
+  elem_descendants(root) {
+    const el = utils.elem_id(root);        // <-- direct reference, no arrow‑fn this
+    return el ? Array.from(el.querySelectorAll("*")) : [];
+  }
 };
