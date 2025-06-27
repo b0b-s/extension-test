@@ -6,7 +6,7 @@
 
   "action": {
     "default_popup": "index.html",
-    "default_icon": "assets/images/image.png"
+    "default_icon": "assets/images/favicon.png"
   },
 
   "permissions": [
