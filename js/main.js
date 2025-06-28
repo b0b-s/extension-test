@@ -41,7 +41,7 @@ function start_up() {
                             break;
                         }
                         default:
-                            console.warn(`Unknown on‑load directive: ${type}`);
+                            console.warn(`unknown on‑load directive: ${type}`);
                     }
                 });
                 resolve(true);
@@ -50,7 +50,7 @@ function start_up() {
                 reject(err);
             }
         };
-        util_script.onerror = e => reject(new Error("Failed to load utils.js"));
+        util_script.onerror = e => reject(new Error("failed to load utils.js"));
         document.body.appendChild(util_script);
     });
 }
